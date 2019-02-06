@@ -1,4 +1,4 @@
-FROM php:7.3-alpine
+FROM php:7.1-alpine
 
 LABEL "com.github.actions.name"="PHPStan GitHub Actions"
 LABEL "com.github.actions.description"="static analyse by phpstan"
