@@ -9,8 +9,13 @@ LABEL "repository"="http://github.com/patrykwozinski/phpstan-githubactions"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
-RUN apk --progress --no-cache add php-imagick \
-	&& pecl install redis && docker-php-ext-enable redis
+RUN apk --update add \
+	php-pear \
+	php7-imagick \
+	php7-redis \
+	php7-soap \
+	php7-zip \
+	php7-gd
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
