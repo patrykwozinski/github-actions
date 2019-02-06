@@ -15,5 +15,8 @@ RUN wget https://github.com/phpstan/phpstan/releases/download/0.11.1/phpstan.pha
     && chmod a+x phpstan \
     && mv phpstan /usr/local/bin/phpstan
 
+RUN php composer.phar global require hirak/prestissimo \
+	&& php composer.phar install -n --prefer-dist --no-scripts -o
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
