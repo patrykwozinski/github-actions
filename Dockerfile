@@ -15,7 +15,8 @@ RUN apk --update add \
 	php7-redis \
 	php7-soap \
 	php7-zip \
-	php7-gd
+	php7-gd \
+	php7-mongodb
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
