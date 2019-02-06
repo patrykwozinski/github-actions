@@ -16,7 +16,9 @@ RUN apk --update add \
 	php7-soap \
 	php7-zip \
 	php7-gd \
-	php7-mongodb
+	php7-mongodb \
+	php7-intl \
+	php7-bcmath
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
