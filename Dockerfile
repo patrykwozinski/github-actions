@@ -13,9 +13,7 @@ RUN echo "memory_limit=2G" >> /usr/local/etc/php/conf.d/memory-limit.ini
 
 RUN wget https://github.com/phpstan/phpstan/releases/download/0.11.1/phpstan.phar -O phpstan \
     && chmod a+x phpstan \
-    && mv phpstan /usr/local/bin/phpstan \
-    && php composer.phar global require hirak/prestissimo \
-	&& php composer.phar install -n --prefer-dist --no-scripts -o
+    && mv phpstan /usr/local/bin/phpstan
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
