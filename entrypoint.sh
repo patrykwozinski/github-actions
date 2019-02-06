@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-sh -c "/usr/local/bin/phpstan analyse $*"
+sh -c "php composer.phar install && /usr/local/bin/phpstan analyse $*"
