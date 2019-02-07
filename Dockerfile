@@ -14,10 +14,20 @@ LABEL "repository"="http://github.com/patrykwozinski/phpstan-githubactions"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
-RUN apk --update add \
+RUN apk --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/community add \
 	bash \
 	git \
+	php7-imagick \
+	php7-redis \
+	php7-soap \
+	php7-zip \
+	php7-gd \
+	php7-mongodb \
+	php7-intl \
+	php7-bcmath \
+	php-pear \
 	php7 \
+	php7-dev \
 	php7-ctype \
 	php7-curl \
 	php7-dom \
@@ -40,14 +50,6 @@ RUN apk --update add \
 	php7-xmlreader \
 	php7-xmlwriter \
 	php7-zlib \
-	php7-imagick \
-	php7-redis \
-	php7-soap \
-	php7-zip \
-	php7-gd \
-	php7-mongodb \
-	php7-intl \
-	php7-bcmath \
 	&& echo "memory_limit=-1" > /etc/php7/conf.d/99_memory-limit.ini \
 	&& rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
