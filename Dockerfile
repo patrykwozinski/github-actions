@@ -10,6 +10,8 @@ LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
 RUN apk --update add \
+	bash \
+	git \
 	php-pear \
 	php7-imagick \
 	php7-redis \
