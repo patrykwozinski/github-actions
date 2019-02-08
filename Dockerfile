@@ -57,4 +57,8 @@ RUN composer global require hirak/prestissimo \
 	&& composer global require phpstan/phpstan ^0.11
 
 ADD entrypoint.sh /entrypoint.sh
+
+VOLUME ["/app"]
+WORKDIR /app
+
 ENTRYPOINT ["/entrypoint.sh"]
