@@ -12,7 +12,7 @@ LABEL "repository"="http://github.com/patrykwozinski/phpstan-githubactions"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
-RUN apk --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/community add \
+RUN apk --update --no-cache add \
 	bash \
 	git \
 	php7-imagick \
