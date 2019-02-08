@@ -2,6 +2,7 @@ FROM php:7.1-alpine
 
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV PATH /composer/vendor/bin:$PATH
 
 LABEL "com.github.actions.name"="PHPStan GitHub Actions"
 LABEL "com.github.actions.description"="static analyse by phpstan"
@@ -13,9 +14,15 @@ LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
 RUN apk --update --no-cache add \
+	gcc \
+	make \
+	g++ \
+	zlib-dev \
 	bash \
 	git \
-	php7-imagick \
+	php-pear \
+	imagemagick-dev \
+	imagemagick \
 	php7-redis \
 	php7-soap \
 	php7-zip \
@@ -23,7 +30,6 @@ RUN apk --update --no-cache add \
 	php7-mongodb \
 	php7-intl \
 	php7-bcmath \
-	php-pear \
 	php7 \
 	php7-dev \
 	php7-ctype \
@@ -51,14 +57,13 @@ RUN apk --update --no-cache add \
 	&& echo "memory_limit=-1" > /etc/php7/conf.d/99_memory-limit.ini \
 	&& rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
+RUN yes '' | pecl install redis mongodb imagick xdebug \
+	docker-php-ext-enable redis mongodb imagick
+
 COPY --from=composer:1.8.0 /usr/bin/composer /usr/local/bin/composer
 
 RUN composer global require hirak/prestissimo \
 	&& composer global require phpstan/phpstan ^0.11
 
 ADD entrypoint.sh /entrypoint.sh
-
-VOLUME ["/app"]
-WORKDIR /app
-
 ENTRYPOINT ["/entrypoint.sh"]
