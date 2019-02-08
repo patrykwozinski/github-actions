@@ -2,8 +2,6 @@ FROM php:7.1-alpine
 
 ENV COMPOSER_HOME /composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV PATH /composer/vendor/bin:$PATH
-ENV PHPSTAN_VERSION 0.11.x
 
 LABEL "com.github.actions.name"="PHPStan GitHub Actions"
 LABEL "com.github.actions.description"="static analyse by phpstan"
