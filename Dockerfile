@@ -57,8 +57,8 @@ RUN apk --update --no-cache add \
 	&& echo "memory_limit=-1" > /etc/php7/conf.d/99_memory-limit.ini \
 	&& rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-RUN yes '' | pecl install redis mongodb imagick xdebug \
-	docker-php-ext-enable redis mongodb imagick
+RUN yes '' | pecl install redis mongodb imagick xdebug
+RUN docker-php-ext-enable redis mongodb imagick
 
 COPY --from=composer:1.8.0 /usr/bin/composer /usr/local/bin/composer
 
