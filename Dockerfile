@@ -14,6 +14,7 @@ LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Patryk Woziński <patryk.wozinski@gmail.com>"
 
 RUN apk --update --no-cache add \
+    jq \
 	gcc \
 	curl \
 	make \
