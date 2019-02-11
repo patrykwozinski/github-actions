@@ -33,8 +33,9 @@ RUN apk --update --no-cache add \
 	imagemagick \
 	php7 \
 	php7-dev \
-	&& echo "memory_limit=-1" > /etc/php7/conf.d/99_memory-limit.ini \
 	&& rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+
+RUN echo -e "memory_limit=2G" > /usr/local/etc/php/php.ini
 
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install \
