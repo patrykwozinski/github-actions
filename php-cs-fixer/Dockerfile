@@ -13,5 +13,7 @@ RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.14.1/
     && chmod a+x php-cs-fixer \
     && mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
+RUN apk --update --no-cache add git
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
