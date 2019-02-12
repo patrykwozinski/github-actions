@@ -1,6 +1,6 @@
 FROM debian:9.5-slim
 
-LABEL "com.github.actions.name"="Docplanner negative filter"
+LABEL "com.github.actions.name"="Branch filter"
 LABEL "com.github.actions.description"="Filter by not specific branch"
 LABEL "com.github.actions.icon"="filter"
 LABEL "com.github.actions.color"="gray-dark"
