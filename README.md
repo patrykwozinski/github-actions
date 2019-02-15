@@ -16,15 +16,14 @@ Used to call actions related to static code analysis using PHPStan. We point to 
 ```bash
 action "PHP Stan" {
   uses = "docker://patrykwozinski/github-actions:phpstan-latest"
-  args = "-c ./phpstan.neon"
-  needs = ["Filter Branch"]
+  args = "-c ./phpstan.neon
   env = {
       BRANCH = "origin/dev"
       FILTERS = "'*.php'"
     }
 }
-
 ```
+If you need to check if `Filter branch` was successfully checked - you need to add: `needs = ["Filter Branch"]`.
 
 ### php-cs-fixer action
 It is used to trigger actions related to the analysis of coding standards using PHP Code Sniffer Fixed. We point to a file with the `.phpcs` configuration and additional optional arguments and we pass two environment variables:` BRANCH` and `FILTERS`.
@@ -40,3 +39,4 @@ action "PHP CS Fixer" {
   }
 }
 ```
+If you need to check if `Filter branch` was successfully checked - you need to add: `needs = ["Filter Branch"]`.
