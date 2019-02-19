@@ -62,5 +62,7 @@ COPY --from=composer:1.8.0 /usr/bin/composer /usr/local/bin/composer
 RUN composer global require hirak/prestissimo \
 	&& composer global require phpstan/phpstan ^0.11
 
+WORKDIR /github/workspace
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

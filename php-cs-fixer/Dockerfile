@@ -15,5 +15,7 @@ RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.14.1/
 
 RUN apk --update --no-cache add git
 
+WORKDIR /github/workspace
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

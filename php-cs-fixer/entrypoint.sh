@@ -7,4 +7,6 @@ echo 'Files to analyse:'
 echo '------------------'
 echo ${FILES}
 
+ls -al
+
 /usr/local/bin/php-cs-fixer fix $* ${FILES}
