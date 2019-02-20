@@ -1,6 +1,11 @@
 #!/bin/sh -l
 
-FILES=$(git diff --name-only --diff-filter=MAd ${BRANCH}...HEAD -- ${FILTERS})
+COMMAND="git diff --name-only --diff-filter=MAd ${BRANCH}...HEAD -- ${FILTERS}"
+
+echo 'Command:'
+echo ${COMMAND}
+
+FILES=$(${COMMAND})
 
 echo "-----------------"
 echo "Analysed files:"
