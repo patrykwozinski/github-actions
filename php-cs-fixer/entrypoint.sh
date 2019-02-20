@@ -2,6 +2,9 @@
 
 FILES=$(git diff --name-only --diff-filter=MAd ${BRANCH}...HEAD -- ${FILTERS})
 
-git branch
+echo "-----------------"
+echo "Analysed files:"
+echo "-----------------"
+echo ${FILES}
 
 /usr/local/bin/php-cs-fixer fix $* ${FILES}
