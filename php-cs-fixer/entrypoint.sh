@@ -1,15 +1,5 @@
 #!/bin/sh -l
 
-COMMAND="git diff-index --name-only --diff-filter=MAd HEAD~$(jq --raw-output .pull_request.commits "$GITHUB_EVENT_PATH") ${DIRECTORY}"
-
-echo 'Command:'
-echo ${COMMAND}
-
-FILES=$(${COMMAND})
-
-echo "-----------------"
-echo "Analysed files:"
-echo "-----------------"
-echo ${FILES}
+FILES=$(cat .ga-changed-files.txt)
 
 /usr/local/bin/php-cs-fixer fix $* ${FILES}
