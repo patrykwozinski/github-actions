@@ -10,15 +10,6 @@ action "Filter Branch" {
 }
 ```
 
-### list-changes-files action
-This action give you information about changed in Pull Request files
-***Example***:
-```bash
-action "List changed files" {
-  uses = "docker://patrykwozinski/github-actions:list-changed-files-latest"
-}
-```
-
 
 ### phpstan action
 Used to call actions related to static code analysis using PHPStan. We point to the `phpstan.neon` file and pass two environment variables:` BRANCH` and `FILTERS`.
