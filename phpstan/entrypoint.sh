@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-COMMAND="git diff --name-only --diff-filter=MAd ${BRANCH}...HEAD -- ${FILTERS}"
+COMMAND="git diff-index --name-only --diff-filter=MAd HEAD~$(jq '.commits | length' "${GITHUB_EVENT_PATH}") ${DIRECTORY}"
 
 echo 'Command:'
 echo ${COMMAND}
