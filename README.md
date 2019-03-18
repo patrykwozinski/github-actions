@@ -11,32 +11,37 @@ action "Filter Branch" {
 ```
 
 
+### list-changed-files action
+We can list all changed files and save into `.ga-changed-files.txt` by this action.
+```bash
+action "List changed files" {
+    uses = "docker://patrykwozinski/github-actions:list-changed-files-latest"
+    env = {
+        DIRECTORY = "src/test"
+    }
+}
+```
+
 ### phpstan action
-Used to call actions related to static code analysis using PHPStan. We point to the `phpstan.neon` file and pass environment variable:`DIRECTORY`.
+Used to call actions related to static code analysis using PHPStan. We point to the `phpstan.neon` file.
 ***Example***:
 ```bash
 action "PHP Stan" {
   uses = "docker://patrykwozinski/github-actions:phpstan-latest"
   args = "-c ./phpstan.neon
-  env = {
-      DIRECTORY = "src/test"
-    }
 }
 ```
 If you need to check if `Filter branch` was successfully checked - you need to add: `needs = ["Filter Branch"]`.
 
 
 ### php-cs-fixer action
-It is used to trigger actions related to the analysis of coding standards using PHP Code Sniffer Fixed. We point to a file with the `.phpcs` configuration and additional optional arguments and we pass environment variable:`DIRECTORY`.
+It is used to trigger actions related to the analysis of coding standards using PHP Code Sniffer Fixed. We point to a file with the `.phpcs` configuration and additional optional arguments.
 ***Example***:
 ```bash
 action "PHP CS Fixer" {
   uses = "docker://patrykwozinski/github-actions:php-cs-fixer-latest"
   args = "--config=.php_cs.dist --diff --dry-run"
   needs = ["Filter Branch"]
-  env = {
-    DIRECTORY = "src/test"
-  }
 }
 ```
 If you need to check if `Filter branch` was successfully checked - you need to add: `needs = ["Filter Branch"]`.
