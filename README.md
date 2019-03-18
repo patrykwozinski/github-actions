@@ -35,6 +35,7 @@ action "PHP Stan" {
 ```
 If you need to check if `Filter branch` was successfully checked - you need to add: `needs = ["Filter Branch"]`.
 
+
 ### php-cs-fixer action
 It is used to trigger actions related to the analysis of coding standards using PHP Code Sniffer Fixed. We point to a file with the `.phpcs` configuration and additional optional arguments and we pass two environment variables:` BRANCH` and `FILTERS`.
 ***Example***:
