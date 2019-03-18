@@ -7,4 +7,4 @@ if [[ -z $FILES ]]; then
     exit 78
 fi
 
-echo $FILES > .ga-changed-files.txt
+echo "$FILES" > .ga-changed-files.txt
