@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 FILES=$(git diff-index --name-only --diff-filter=MAd HEAD~$(jq --raw-output .pull_request.commits "$GITHUB_EVENT_PATH") $DIRECTORY)
 
